@@ -1,0 +1,12 @@
+<div class="view">
+  <div class="header">
+    查看安装图片
+  </div>
+  <div class="filter">
+    <input class="input" placeholder="设备SN" @keyup.13="search" v-model="form.keywords" type="text">
+    <button class="search-btn" @click="search">搜索</button>
+  </div>
+  <div v-if="result.url" class="image-container">
+    <img :src="result.url" alt="image">
+  </div>
+</div>
