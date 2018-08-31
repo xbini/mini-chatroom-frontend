@@ -4,6 +4,7 @@
     "stylelint-scss"
   ],
   "rules": {
+    "at-rule-no-unknown": null,
     "at-rule-empty-line-before": [
       "always",
       {
@@ -34,16 +35,26 @@
     "selector-list-comma-newline-after": "always-multi-line",
     "selector-type-no-unknown": null,
     "no-empty-source": null,
+    "no-descending-specificity": null,
+    "scss/at-rule-no-unknown": true,
     "scss/declaration-nested-properties": "never",
     "scss/selector-no-redundant-nesting-selector": true,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements":
+        [ "ng-deep"]
+      }
+    ],
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        ignorePseudoClasses: [
+        "ignorePseudoClasses": [
           "vertical",
           "horizontal",
-          "window-inactive",
-        ],
+          "window-inactive"
+
+        ]
       }
     ]
   }

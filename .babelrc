@@ -1,11 +1,13 @@
 {
   "presets": [
-    ["es2015", { "modules": false }]
+    "env"
   ],
-  "plugins": [["component", [
-    {
-      "libraryName": "mint-ui",
-      "style": true
-    }
-  ]]]
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    [
+      "transform-runtime"
+    ]
+  ]
 }

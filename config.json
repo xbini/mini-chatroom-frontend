@@ -1,5 +1,3 @@
 {
-  "server":  "http://nachao.me",
-  "imgServer": "",
-  "pages":["hit-me"]
+  "server":  ""
 }
