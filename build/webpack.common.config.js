@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 let commonConfig = {
     target: 'web',
     devtool: 'source-map',
-    entry: path.resolve(__dirname, '../src/main.js'),
+    entry: {
+        polyfill: path.resolve(__dirname, '../src/polyfill.js'),
+        main: path.resolve(__dirname, '../src/main.js')
+    },
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].js'
@@ -13,6 +16,17 @@ let commonConfig = {
         extensions: ['.vue', '.js', '.scss', '.css', '.html'],
         alias: {
             vue$: 'vue/dist/vue.esm.js'
+        }
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    test: /node_modules\//,
+                    name: 'vendor'
+                }
+            }
         }
     },
     module: {
