@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "",
-    "server": "",
-    "prod": ""
+    "server": "webpack-dev-server --color --progress --hot --inline --config ./build/webpack.dev.config",
+    "prod": "webpack --color --progress --config ./build/webpack.prod.config"
   },
   "husky": {
     "hooks": {
@@ -18,16 +18,33 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@commitlint/lint": "^7.1.1",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.1",
+    "css-loader": "^1.0.0",
     "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-vue": "^4.7.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^0.14.3",
+    "json-loader": "^0.5.7",
     "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0",
+    "url-loader": "^1.1.1",
+    "vue-loader": "^15.4.1",
     "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.7",
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "stylelint-scss": "^3.3.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0",

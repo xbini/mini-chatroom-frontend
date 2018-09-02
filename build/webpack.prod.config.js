@@ -1,17 +1,8 @@
 const webpack = require('webpack')
-const baseConfig = require('./base.js')
+const merge = require('webpack-merge')
+const commonConfig = require('./webpack.common.config')
 
-let prodConfig = baseConfig
-prodConfig.plugins = baseConfig.plugins.concat([
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: '"production"'
-    }
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    }
-  })
-])
+let prodConfig = merge(commonConfig, {
+    mode: 'production'
+})
 module.exports = prodConfig

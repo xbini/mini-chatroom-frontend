@@ -1,5 +1,8 @@
 {
-  "extends": ["airbnb/base", "plugin:vue/strongly-recommended"],
+  "extends": [
+    "airbnb/base",
+    "plugin:vue/strongly-recommended"
+  ],
   "env": {
     "node": true,
     "jquery": true,
