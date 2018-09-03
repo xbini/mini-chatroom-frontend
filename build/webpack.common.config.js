@@ -21,13 +21,22 @@ const commonConfig = {
         }
     },
     optimization: {
+        runtimeChunk: {
+            name: 'runtime'
+        },
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
                 vendor: {
-                    test: /node_modules/,
-                    priority: 1,
+                    test: /\/node_modules\//,
+                    priority: 2,
                     name: 'vendor'
+                },
+                polyfill: {
+                    chunks: 'initial',
+                    test: /polyfill/,
+                    name: 'polyfill',
+                    priority: 10
                 }
             }
         }
@@ -50,10 +59,6 @@ const commonConfig = {
             {
                 test: /\.scss$/,
                 use: 'sass-loader'
-            },
-            {
-                test: /\.json$/,
-                use: 'json-loader'
             },
             {
                 test: /\.html$/,

@@ -1,6 +1,7 @@
 import { Vue } from 'vue-property-decorator'
 import VueRouter from 'vue-router'
 import { getRouter } from './pages/router'
+import './polyfill'
 
 Vue.use(VueRouter)
 

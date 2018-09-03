@@ -6,4 +6,4 @@ export class EntryPageComponent extends Vue {
     title = '你真是太可爱了！😊'
 }
 
-console.log(22231)
+console.log(template)
