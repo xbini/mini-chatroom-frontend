@@ -5,6 +5,7 @@ const commonConfig = require('./webpack.common.config')
 
 let devConfig = merge(commonConfig, {
     mode: 'development',
+    cache: true,
     devServer: {
         contentBase: path.resolve(__dirname, '../dist/'),
         proxy: [{
@@ -17,7 +18,7 @@ let devConfig = merge(commonConfig, {
         }],
         clientLogLevel: 'info',
         disableHostCheck: true,
-        compress: false,
+        compress: true,
         port: 1500,
         host: '0.0.0.0',
         open: true,
