@@ -3,7 +3,7 @@ const merge = require('webpack-merge')
 const config = require('../config.json')
 const commonConfig = require('./webpack.common.config')
 
-let devConfig = merge(commonConfig, {
+const devConfig = merge(commonConfig, {
     devServer: {
         contentBase: path.resolve(__dirname, '../dist/'),
         proxy: [{

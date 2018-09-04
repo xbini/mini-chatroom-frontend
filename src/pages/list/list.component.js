@@ -1,5 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import template from './list.component.html'
+import './list.compoent.scss'
 
 @Component({ template })
 export default class ListPageComponent extends Vue {

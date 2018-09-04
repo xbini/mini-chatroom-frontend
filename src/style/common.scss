@@ -1,0 +1,41 @@
+@each $size in 0, 4, 8, 16, 32 {
+  .m-#{$size} {
+    margin: #{$size}px;
+  }
+
+  .mt-#{$size} {
+    margin-top: #{$size}px;
+  }
+
+  .mr-#{$size} {
+    margin-right: #{$size}px;
+  }
+
+  .mb-#{$size} {
+    margin-bottom: #{$size}px;
+  }
+
+  .ml-#{$size} {
+    margin-left: #{$size}px;
+  }
+
+  .p-#{$size} {
+    margin: #{$size}px;
+  }
+
+  .pt-#{$size} {
+    margin-top: #{$size}px;
+  }
+
+  .pr-#{$size} {
+    margin-right: #{$size}px;
+  }
+
+  .pb-#{$size} {
+    margin-bottom: #{$size}px;
+  }
+
+  .pl-#{$size} {
+    margin-left: #{$size}px;
+  }
+}

@@ -1,5 +1,5 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -11,6 +11,9 @@ const commonConfig = {
     devtool: 'source-map',
     // externals: ['vue', 'vue-router'],
     context: root,
+    stats: {
+        children: false
+    },
     entry: {
         polyfill: './src/polyfill.js',
         main: './src/main.js'
@@ -22,7 +25,7 @@ const commonConfig = {
         chunkFilename: '[name].js'
     },
     resolve: {
-        extensions: ['.vue', '.js', '.scss', '.css', '.html'],
+        extensions: ['.vue', '.js', '.json', '.scss', '.css', '.html'],
         alias: {
             vue$: 'vue/dist/vue.esm.js'
         }
@@ -32,8 +35,7 @@ const commonConfig = {
             name: 'runtime'
         },
         splitChunks: {
-            chunks: 'all',
-            minChunks: 2
+            chunks: 'all'
         }
     },
     module: {
@@ -49,11 +51,11 @@ const commonConfig = {
             },
             {
                 test: /\.css$/,
-                use: 'css-loader'
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
             },
             {
                 test: /\.scss$/,
-                use: 'sass-loader'
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
             },
             {
                 test: /\.html$/,
@@ -80,7 +82,6 @@ const commonConfig = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin([path.resolve(__dirname, '../dist')], { root }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
             favicon: path.resolve(__dirname, '../favicon.png'),
@@ -89,7 +90,10 @@ const commonConfig = {
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../src/assets'),
             to: path.resolve(__dirname, '../dist/assets')
-        }])
+        }]),
+        new MiniCssExtractPlugin({
+            filename: '[name].css'
+        })
     ]
 }
 module.exports = commonConfig
