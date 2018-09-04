@@ -1,18 +1,25 @@
 const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const root = path.resolve(__dirname, '../')
 const commonConfig = {
     target: 'web',
+    cache: true,
+    mode: 'development',
     devtool: 'source-map',
-    // externals: ['vue'],
-    context: path.resolve(__dirname),
+    // externals: ['vue', 'vue-router'],
+    context: root,
     entry: {
-        main: '../src/main.js'
+        polyfill: './src/polyfill.js',
+        main: './src/main.js'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: '[name].js'
+        filename: '[name].js',
+        // todo: webpack@4.17.2这个版本, chunkFilename还有bug
+        chunkFilename: '[name].js'
     },
     resolve: {
         extensions: ['.vue', '.js', '.scss', '.css', '.html'],
@@ -26,19 +33,7 @@ const commonConfig = {
         },
         splitChunks: {
             chunks: 'all',
-            cacheGroups: {
-                vendor: {
-                    test: /\/node_modules\//,
-                    priority: 2,
-                    name: 'vendor'
-                },
-                polyfill: {
-                    chunks: 'initial',
-                    test: /polyfill/,
-                    name: 'polyfill',
-                    priority: 10
-                }
-            }
+            minChunks: 2
         }
     },
     module: {
@@ -85,6 +80,7 @@ const commonConfig = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin([path.resolve(__dirname, '../dist')], { root }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
             favicon: path.resolve(__dirname, '../favicon.png'),

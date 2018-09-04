@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "",
     "serve": "webpack-dev-server --color --progress --hot --inline --config ./build/webpack.dev.config",
-    "prod": "webpack --color --progress --config ./build/webpack.prod.config"
+    "build": "webpack --color --progress --config ./build/webpack.prod.config"
   },
   "husky": {
     "hooks": {
@@ -20,10 +20,12 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@commitlint/lint": "^7.1.1",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.1",
+    "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "eslint": "^5.4.0",
@@ -37,7 +39,7 @@
     "stylelint-config-standard": "^18.2.0",
     "url-loader": "^1.1.1",
     "vue-loader": "^15.4.1",
-    "webpack": "^4.17.1",
+    "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.7",
     "webpack-merge": "^4.1.4"
