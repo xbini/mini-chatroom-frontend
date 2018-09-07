@@ -8,7 +8,7 @@ const commonConfig = {
     target: 'web',
     cache: true,
     mode: 'development',
-    devtool: 'source-map',
+    devtool: 'cheap-module-eval-source-map',
     // externals: ['vue', 'vue-router'],
     context: root,
     stats: {
