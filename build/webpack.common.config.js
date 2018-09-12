@@ -84,7 +84,7 @@ const commonConfig = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
-            favicon: path.resolve(__dirname, '../favicon.png'),
+            favicon: path.resolve(__dirname, '../favicon.jpg'),
             hash: true
         }),
         new CopyWebpackPlugin([{
