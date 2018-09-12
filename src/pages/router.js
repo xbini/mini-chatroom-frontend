@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import VueRouter from 'vue-router'
 import EntryPageComponent from './entry/entry.component'
 
