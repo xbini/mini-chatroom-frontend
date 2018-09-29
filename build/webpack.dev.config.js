@@ -6,14 +6,19 @@ const commonConfig = require('./webpack.common.config')
 const devConfig = merge(commonConfig, {
     devServer: {
         contentBase: path.resolve(__dirname, '../dist/'),
-        proxy: [{
-            context: [
-                '/api/'
-            ],
-            target: config.server,
-            changeOrigin: true,
-            secure: false
-        }],
+        proxy: [
+            {
+                context: ['/api/'],
+                target: `${config.server}/api`,
+                changeOrigin: true,
+                secure: false
+            }, {
+                context: ['/ws/'],
+                target: `${config.server}/ws`,
+                changeOrigin: true,
+                secure: false
+            }
+        ],
         clientLogLevel: 'info',
         disableHostCheck: true,
         compress: true,
