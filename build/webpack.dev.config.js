@@ -9,12 +9,7 @@ const devConfig = merge(commonConfig, {
         proxy: [
             {
                 context: ['/api/'],
-                target: `${config.server}/api`,
-                changeOrigin: true,
-                secure: false
-            }, {
-                context: ['/ws/'],
-                target: `${config.server}/ws`,
+                target: config.server.api,
                 changeOrigin: true,
                 secure: false
             }
