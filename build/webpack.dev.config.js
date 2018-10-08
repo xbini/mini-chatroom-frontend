@@ -2,8 +2,13 @@ const path = require('path')
 const merge = require('webpack-merge')
 const config = require('../config.json')
 const commonConfig = require('./webpack.common.config')
+const genStyleLoaders = require('./style.loaders')
 
 const devConfig = merge(commonConfig, {
+    mode: 'development',
+    module: {
+        rules: genStyleLoaders()
+    },
     devServer: {
         contentBase: path.resolve(__dirname, '../dist/'),
         proxy: [

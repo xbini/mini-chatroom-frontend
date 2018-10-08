@@ -1,5 +1,4 @@
 const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -7,7 +6,6 @@ const root = path.resolve(__dirname, '../')
 const commonConfig = {
     target: 'web',
     cache: true,
-    mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     // externals: ['vue', 'vue-router'],
     context: root,
@@ -21,7 +19,6 @@ const commonConfig = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].js',
-        // todo: webpack@4.17.2这个版本, chunkFilename还有bug
         chunkFilename: '[name].js'
     },
     resolve: {
@@ -48,14 +45,6 @@ const commonConfig = {
             {
                 test: /\.vue$/,
                 use: 'vue-loader'
-            },
-            {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-            },
-            {
-                test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
             },
             {
                 test: /\.html$/,
@@ -90,10 +79,7 @@ const commonConfig = {
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../src/assets'),
             to: path.resolve(__dirname, '../dist/assets')
-        }]),
-        new MiniCssExtractPlugin({
-            filename: '[name].css'
-        })
+        }])
     ]
 }
 module.exports = commonConfig
