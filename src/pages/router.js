@@ -13,9 +13,9 @@ export function getRouter(option = {}) {
             component: EntryPageComponent
         },
         {
-            path: '/list',
-            // component: () => import(/* webpackChunkName: 'list.component' */'./list/list.component')
-            component: () => import('./list/list.component')
+            path: '/window-properties',
+            // component: () => import(/* webpackChunkName: 'list.component' */'./window-properties/list.component')
+            component: () => import('./window-properties/list.component')
         }
     ]
     return new VueRouter({ routes })

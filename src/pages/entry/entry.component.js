@@ -16,7 +16,6 @@ export default class EntryPageComponent extends Vue {
         this.socket.emit('msg', 'i am coming')
         this.socket.on('date-change', (timestamp) => {
             this.date = new Date(timestamp)
-            console.info(timestamp)
         })
     }
 
