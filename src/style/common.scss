@@ -1,3 +1,7 @@
+.text-right {
+  text-align: right;
+}
+
 @each $size in 0, 4, 8, 16, 32 {
   .m-#{$size} {
     margin: #{$size}px;
@@ -20,23 +24,23 @@
   }
 
   .p-#{$size} {
-    margin: #{$size}px;
+    padding: #{$size}px;
   }
 
   .pt-#{$size} {
-    margin-top: #{$size}px;
+    padding-top: #{$size}px;
   }
 
   .pr-#{$size} {
-    margin-right: #{$size}px;
+    padding-right: #{$size}px;
   }
 
   .pb-#{$size} {
-    margin-bottom: #{$size}px;
+    padding-bottom: #{$size}px;
   }
 
   .pl-#{$size} {
-    margin-left: #{$size}px;
+    padding-left: #{$size}px;
   }
 }
 

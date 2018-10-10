@@ -5,9 +5,13 @@ import { SOCKET } from '../../core/core-api'
 
 @Component({ template })
 export default class EntryPageComponent extends Vue {
-    title = '你真是太可爱了！😊'
-    date = new Date().toLocaleString()
+    collapsed = false
+    date = new Date().toString()
     socket = null
+
+    toggleCollapsed() {
+        this.collapsed = !this.collapsed
+    }
 
     registerSocket() {
         this.socket = io(SOCKET, {
