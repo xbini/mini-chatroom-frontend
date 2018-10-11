@@ -1,5 +1,6 @@
 const path = require('path')
 const merge = require('webpack-merge')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const commonConfig = require('./webpack.common.config')
@@ -14,6 +15,14 @@ const prodConfig = merge(commonConfig, {
     },
     plugins: [
         new CleanWebpackPlugin([path.resolve(__dirname, '../dist')], { root }),
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets: [
+                'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js',
+                'https://unpkg.com/vue-router/dist/vue-router.min.js',
+                'https://unpkg.com/vuex/dist/vuex.min.js'
+            ],
+            append: false
+        }),
         new MiniCssExtractPlugin({
             filename: '[name].css'
         })

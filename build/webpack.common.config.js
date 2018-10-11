@@ -7,7 +7,11 @@ const commonConfig = {
     target: 'web',
     cache: true,
     devtool: 'cheap-module-eval-source-map',
-    // externals: ['vue', 'vue-router'],
+    externals: {
+        vue: 'Vue',
+        'vue-router': 'VueRouter',
+        vuex: 'Vuex'
+    },
     context: root,
     stats: {
         children: false
@@ -32,7 +36,10 @@ const commonConfig = {
             name: 'runtime'
         },
         splitChunks: {
-            chunks: 'all'
+            chunks(chunk) {
+                // exclude `polyfill`
+                return chunk.name && chunk.name.includes('polyfill') === false
+            }
         }
     },
     module: {
@@ -55,7 +62,11 @@ const commonConfig = {
                 use: {
                     loader: 'url-loader',
                     options: {
-                        limit: 2048
+                        limit: 2048,
+                        name: '[name].[ext]',
+                        outputPath: 'images'
+                        // cdn 前缀
+                        // publicPath
                     }
                 }
             },
@@ -64,7 +75,11 @@ const commonConfig = {
                 use: {
                     loader: 'url-loader',
                     options: {
-                        limit: 2048
+                        limit: 2048,
+                        name: '[name].[ext]',
+                        outputPath: 'fonts'
+                        // cdn 前缀
+                        // publicPath
                     }
                 }
             }
@@ -74,7 +89,8 @@ const commonConfig = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
             favicon: path.resolve(__dirname, '../favicon.jpg'),
-            hash: true
+            hash: true,
+            title: 'Vue start'
         }),
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../src/assets'),

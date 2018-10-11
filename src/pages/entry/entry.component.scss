@@ -1,0 +1,20 @@
+@import "../../style/variable";
+
+.entry-page {
+  height: 100%;
+
+  .el-header {
+    background-color: rgb(72, 72, 72);
+    height: 60px;
+    line-height: 60px;
+    color: #f4f4f4;
+  }
+
+  .el-aside {
+    background-color: #545c64;
+
+    .el-menu {
+      border: none;
+    }
+  }
+}

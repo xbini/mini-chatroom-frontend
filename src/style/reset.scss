@@ -19,3 +19,18 @@ html, body {
 a {
   text-decoration: none;
 }
+
+// webkit 内核浏览器滚动条样式修改
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+}

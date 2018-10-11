@@ -5,11 +5,10 @@
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     [
-      "import",
+      "component",
       {
-        "libraryName": "ant-design-vue",
-        "libraryDirectory": "es",
-        "style": "css"
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
       }
     ],
     [

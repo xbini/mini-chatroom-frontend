@@ -2,15 +2,28 @@ import { Component, Vue } from 'vue-property-decorator'
 import io from 'socket.io-client'
 import template from './entry.component.html'
 import { SOCKET } from '../../core/core-api'
+import './entry.component.scss'
+import { getRoutes } from '../router'
+
 
 @Component({ template })
 export default class EntryPageComponent extends Vue {
-    collapsed = false
     date = new Date().toString()
     socket = null
 
-    toggleCollapsed() {
-        this.collapsed = !this.collapsed
+
+    get menus() {
+        const routes = getRoutes()
+            .filter(r => r.path !== '')
+        return routes.map((route, index) => ({
+            index: `${index}`,
+            name: route.path,
+            children: route.children.map((c, i) => ({
+                index: `${index}-${i}`,
+                path: `${route.path}/${c.path}`,
+                name: c.path
+            }))
+        }))
     }
 
     registerSocket() {
@@ -23,8 +36,12 @@ export default class EntryPageComponent extends Vue {
         })
     }
 
-    mounted() {
+    initialization() {
         return this.registerSocket()
+    }
+
+    mounted() {
+        return this.initialization()
     }
 
     destroyed() {

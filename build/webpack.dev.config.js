@@ -1,5 +1,6 @@
 const path = require('path')
 const merge = require('webpack-merge')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const config = require('../config.json')
 const commonConfig = require('./webpack.common.config')
 const genStyleLoaders = require('./style.loaders')
@@ -9,6 +10,16 @@ const devConfig = merge(commonConfig, {
     module: {
         rules: genStyleLoaders()
     },
+    plugins: [
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets: [
+                'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
+                'https://unpkg.com/vue-router/dist/vue-router.js',
+                'https://unpkg.com/vuex/dist/vuex.js'
+            ],
+            append: false
+        })
+    ],
     devServer: {
         contentBase: path.resolve(__dirname, '../dist/'),
         proxy: [

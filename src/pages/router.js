@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-import VueRouter from 'vue-router'
 import EntryPageComponent from './entry/entry.component'
 
-export function getRouter(option = {}) {
+export function getRoutes(option = {}) {
     const routes = [
         {
             path: '',
@@ -10,13 +9,19 @@ export function getRouter(option = {}) {
         },
         {
             path: '/entry',
-            component: EntryPageComponent
-        },
-        {
-            path: '/window-properties',
-            // component: () => import(/* webpackChunkName: 'list.component' */'./window-properties/list.component')
-            component: () => import('./window-properties/list.component')
+            component: EntryPageComponent,
+            children: [
+                {
+                    path: 'sort',
+                    // component: () => import(/* webpackChunkName: 'list.component' */'./sort/sort.component')
+                    component: () => import('./sort/sort.component')
+                },
+                {
+                    path: 'window-properties',
+                    component: () => import('./window-properties/list.component')
+                }
+            ]
         }
     ]
-    return new VueRouter({ routes })
+    return routes
 }
