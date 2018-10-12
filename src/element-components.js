@@ -6,7 +6,9 @@ import {
     MenuItemGroup,
     Submenu,
     Menu,
-    Header
+    Header,
+    Row,
+    Col
 } from 'element-ui'
 
 export const usedElementComponents = [
@@ -17,5 +19,7 @@ export const usedElementComponents = [
     MenuItem,
     MenuItemGroup,
     Submenu,
-    Menu
+    Menu,
+    Row,
+    Col
 ]

@@ -1,11 +1,15 @@
 <el-container class="entry-page">
   <el-header class="header">
-    header
+    <el-row type="flex">
+      <el-col>header</el-col>
+      <el-col class="text-right">
+        <small>当前服务器时间：{{date.toString()}}</small>
+      </el-col>
+    </el-row>
   </el-header>
   <el-container>
     <el-aside>
-      <el-menu class="el-menu-vertical-demo"
-               background-color="#545c64"
+      <el-menu background-color="#545c64"
                text-color="#fff"
                active-text-color="#ffd04b">
         <el-submenu v-for="menu in menus" :index="menu.index" :key="menu.index">
@@ -21,7 +25,6 @@
       </el-menu>
     </el-aside>
     <el-main>
-      <h4 class="text-right m-0">当前服务器时间：{{date.toString()}}</h4>
       <router-view></router-view>
     </el-main>
   </el-container>

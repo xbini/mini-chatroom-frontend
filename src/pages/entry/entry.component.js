@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import template from './entry.component.html'
 import { SOCKET } from '../../core/core-api'
 import './entry.component.scss'
-import { getRoutes } from '../router'
+import { getRoutes } from '../routes'
 
 
 @Component({ template })
@@ -37,7 +37,7 @@ export default class EntryPageComponent extends Vue {
     }
 
     initialization() {
-        return this.registerSocket()
+        // return this.registerSocket()
     }
 
     mounted() {

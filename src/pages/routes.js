@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-vars */
 import EntryPageComponent from './entry/entry.component'
 
+/**
+ *
+ * @param {Object} option: 可以是权限相关配置，动态解析适合的路由
+ * @returns {*[]}
+ */
 export function getRoutes(option = {}) {
     const routes = [
         {
