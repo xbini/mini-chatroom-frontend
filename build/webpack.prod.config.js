@@ -17,7 +17,9 @@ const prodConfig = merge(commonConfig, {
         new CleanWebpackPlugin([path.resolve(__dirname, '../dist')], { root }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [
-                'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js',
+                'https://unpkg.com/vue/dist/vue.min.js',
                 'https://unpkg.com/vue-router/dist/vue-router.min.js',
                 'https://unpkg.com/vuex/dist/vuex.min.js'
             ],

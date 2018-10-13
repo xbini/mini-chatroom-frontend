@@ -10,7 +10,8 @@ const commonConfig = {
     externals: {
         vue: 'Vue',
         'vue-router': 'VueRouter',
-        vuex: 'Vuex'
+        vuex: 'Vuex',
+        moment: 'moment'
     },
     context: root,
     stats: {

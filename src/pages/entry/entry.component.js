@@ -1,5 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import io from 'socket.io-client'
+import moment from 'moment'
 import template from './entry.component.html'
 import { SOCKET } from '../../core/core-api'
 import './entry.component.scss'
@@ -8,7 +9,7 @@ import { getRoutes } from '../routes'
 
 @Component({ template })
 export default class EntryPageComponent extends Vue {
-    date = new Date().toString()
+    formatDateTime = moment().format('YYYY年MoDo hh:mm:ss')
     socket = null
 
 
@@ -18,11 +19,13 @@ export default class EntryPageComponent extends Vue {
         return routes.map((route, index) => ({
             index: `${index}`,
             name: route.path,
-            children: route.children.map((c, i) => ({
-                index: `${index}-${i}`,
-                path: `${route.path}/${c.path}`,
-                name: c.path
-            }))
+            children: route.children
+                .filter(c => c.path !== '')
+                .map((c, i) => ({
+                    index: `${index}-${i}`,
+                    path: `${route.path}/${c.path}`,
+                    name: c.path
+                }))
         }))
     }
 
@@ -32,12 +35,12 @@ export default class EntryPageComponent extends Vue {
         })
         this.socket.emit('msg', 'i am coming')
         this.socket.on('date-change', (timestamp) => {
-            this.date = new Date(timestamp)
+            this.formatDateTime = moment(timestamp).format('YYYY年MoDo hh:mm:ss')
         })
     }
 
     initialization() {
-        // return this.registerSocket()
+        return this.registerSocket()
     }
 
     mounted() {

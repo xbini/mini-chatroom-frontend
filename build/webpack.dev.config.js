@@ -13,7 +13,9 @@ const devConfig = merge(commonConfig, {
     plugins: [
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [
-                'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js',
+                'https://unpkg.com/vue/dist/vue.js',
                 'https://unpkg.com/vue-router/dist/vue-router.js',
                 'https://unpkg.com/vuex/dist/vuex.js'
             ],
@@ -35,7 +37,7 @@ const devConfig = merge(commonConfig, {
         compress: true,
         port: 1500,
         host: '0.0.0.0',
-        open: true,
+        open: false,
         useLocalIp: true
     }
 })

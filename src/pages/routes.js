@@ -17,6 +17,10 @@ export function getRoutes(option = {}) {
             component: EntryPageComponent,
             children: [
                 {
+                    path: '',
+                    redirect: 'sort'
+                },
+                {
                     path: 'sort',
                     // component: () => import(/* webpackChunkName: 'list.component' */'./sort/sort.component')
                     component: () => import('./sort/sort.component')
