@@ -2,32 +2,38 @@ const path = require('path')
 const merge = require('webpack-merge')
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const commonConfig = require('./webpack.common.config')
-const genStyleLoaders = require('./style.loaders')
+const genStyleLoadersAndPlugins = require('./style.loaders')
 
 const root = path.resolve(__dirname, '../')
+const styleOptions = genStyleLoadersAndPlugins(true)
+
 const prodConfig = merge(commonConfig, {
     mode: 'production',
     devtool: 'source-map',
     module: {
-        rules: genStyleLoaders(true)
+        rules: styleOptions.loaders
     },
     plugins: [
         new CleanWebpackPlugin([path.resolve(__dirname, '../dist')], { root }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [
-                'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js',
-                'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js',
-                'https://unpkg.com/vue/dist/vue.min.js',
-                'https://unpkg.com/vue-router/dist/vue-router.min.js',
-                'https://unpkg.com/vuex/dist/vuex.min.js'
+                // moment
+                'https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js',
+                'https://cdn.jsdelivr.net/npm/moment@2.22.2/locale/zh-cn.min.js',
+                // vue libs
+                'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js',
+                'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
+                'https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.min.js',
+                // element-ui
+                'https://cdn.jsdelivr.net/npm/element-ui@2.4.8/lib/index.js',
+                'https://cdn.jsdelivr.net/npm/element-ui@2.4.8/lib/theme-chalk/index.css',
+                // socket.io
+                'https://cdn.jsdelivr.net/npm/socket.io-client@2.1.1/dist/socket.io.js'
             ],
             append: false
         }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css'
-        })
+        ...styleOptions.plugins
     ]
 })
 module.exports = prodConfig

@@ -11,7 +11,9 @@ const commonConfig = {
         vue: 'Vue',
         'vue-router': 'VueRouter',
         vuex: 'Vuex',
-        moment: 'moment'
+        moment: 'moment',
+        'element-ui': 'ELEMENT',
+        'socket.io-client': 'io'
     },
     context: root,
     stats: {
