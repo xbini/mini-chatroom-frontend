@@ -11,6 +11,9 @@ const styleOptions = genStyleLoadersAndPlugins(true)
 const prodConfig = merge(commonConfig, {
     mode: 'production',
     devtool: 'source-map',
+    performance: {
+        hints: 'error'
+    },
     module: {
         rules: styleOptions.loaders
     },
@@ -18,6 +21,7 @@ const prodConfig = merge(commonConfig, {
         new CleanWebpackPlugin([path.resolve(__dirname, '../dist')], { root }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [
+                // libs should be loaded via cdn
                 // moment
                 'https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js',
                 'https://cdn.jsdelivr.net/npm/moment@2.22.2/locale/zh-cn.min.js',

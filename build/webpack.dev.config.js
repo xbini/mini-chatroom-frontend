@@ -15,6 +15,7 @@ const devConfig = merge(commonConfig, {
     plugins: [
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [
+                // libs should be loaded via cdn
                 // moment
                 'https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.js',
                 'https://cdn.jsdelivr.net/npm/moment@2.22.2/locale/zh-cn.js',
@@ -34,6 +35,9 @@ const devConfig = merge(commonConfig, {
     ],
     devServer: {
         contentBase: path.resolve(__dirname, '../dist/'),
+        stats: {
+            children: false
+        },
         proxy: [
             {
                 context: ['/api/'],
@@ -42,6 +46,7 @@ const devConfig = merge(commonConfig, {
                 secure: false
             }
         ],
+        overlay: true,
         clientLogLevel: 'info',
         disableHostCheck: true,
         compress: true,
