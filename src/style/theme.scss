@@ -1,0 +1,11 @@
+@import "variable";
+
+@each $color, $value in $colors-map {
+  .color-#{$color} {
+    color: #{$value};
+  }
+}
+
+html, body {
+  color: map-get($colors-map, dark);
+}

@@ -39,7 +39,7 @@
         Chrome: 24,
         Firefox: 22,
         Opera: 16,
-        Safari: 7
+        Safari: 6.1
       }
       if (browser.version < lowestSupported[browser.name]) {
         window.confirm('检测到您的浏览器版本过低，需要升级!')
@@ -47,11 +47,11 @@
       }
     })(window)
   </script>
-  <title>Title</title>
+  <title>Vue-start</title>
 </head>
 <body>
-<div style="height: 100%;" id="app">
-  <transition name="fade">
+<div style="overflow: hidden;" class="full-height" id="app">
+  <transition name="el-fade-in">
     <router-view></router-view>
   </transition>
 </div>

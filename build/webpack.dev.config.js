@@ -19,6 +19,9 @@ const devConfig = merge(commonConfig, {
                 // moment
                 'https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.js',
                 'https://cdn.jsdelivr.net/npm/moment@2.22.2/locale/zh-cn.js',
+                // perfect-scrollbar
+                'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.4.0/dist/perfect-scrollbar.js',
+                'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.4.0/css/perfect-scrollbar.css',
                 // vue libs
                 'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js',
                 'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.js',
