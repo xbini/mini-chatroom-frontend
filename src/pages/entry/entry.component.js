@@ -40,7 +40,7 @@ export default class EntryPageComponent extends Vue {
     }
 
     initialization() {
-        return this.registerSocket()
+        // return this.registerSocket()
     }
 
     mounted() {
