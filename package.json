@@ -13,9 +13,7 @@
     "serve:hmr": "webpack-dev-server --color --progress --hot --inline --config ./build/webpack.dev.config",
     "build": "webpack --color --progress --config ./build/webpack.prod.config",
     "release": "standard-version",
-    "prerelease": "standard-version --prerelease",
-    "precommit": "yarn lint",
-    "commitmsg": "commitlint --color --edit"
+    "prerelease": "standard-version --prerelease"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
