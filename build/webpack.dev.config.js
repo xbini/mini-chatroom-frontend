@@ -17,20 +17,20 @@ const devConfig = merge(commonConfig, {
             assets: [
                 // libs should be loaded via cdn
                 // moment
-                'https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.js',
-                'https://cdn.jsdelivr.net/npm/moment@2.22.2/locale/zh-cn.js',
+                'https://cdn.jsdelivr.net/npm/moment/moment.js',
+                'https://cdn.jsdelivr.net/npm/moment/locale/zh-cn.js',
                 // perfect-scrollbar
-                'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.4.0/dist/perfect-scrollbar.js',
-                'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.4.0/css/perfect-scrollbar.css',
+                'https://cdn.jsdelivr.net/npm/perfect-scrollbar/dist/perfect-scrollbar.js',
+                'https://cdn.jsdelivr.net/npm/perfect-scrollbar/css/perfect-scrollbar.css',
                 // vue libs
-                'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js',
-                'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.js',
-                'https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.js',
+                'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
+                'https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js',
+                'https://cdn.jsdelivr.net/npm/vuex/dist/vuex.js',
                 // element-ui
-                'https://cdn.jsdelivr.net/npm/element-ui@2.4.8/lib/index.js',
-                'https://cdn.jsdelivr.net/npm/element-ui@2.4.8/lib/theme-chalk/index.css',
+                'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
+                'https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css',
                 // socket.io
-                'https://cdn.jsdelivr.net/npm/socket.io-client@2.1.1/dist/socket.io.dev.js'
+                'https://cdn.jsdelivr.net/npm/socket.io-client/dist/socket.io.dev.js'
             ],
             append: false
         }),

@@ -24,7 +24,6 @@ const commonConfig = {
         children: false
     },
     entry: {
-        polyfill: './src/polyfill.js',
         main: './src/main.js'
     },
     output: {
@@ -40,15 +39,16 @@ const commonConfig = {
         }
     },
     optimization: {
+        noEmitOnErrors: true,
         runtimeChunk: {
             name: 'runtime'
         },
-        splitChunks: {
-            chunks(chunk) {
-                // exclude `polyfill`
-                return chunk.name && chunk.name.includes('polyfill') === false
-            }
-        }
+        // splitChunks: {
+        //     chunks(chunk) {
+        //         // exclude `polyfill`
+        //         return chunk.name && chunk.name.includes('polyfill') === false
+        //     }
+        // }
     },
     module: {
         rules: [

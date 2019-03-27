@@ -1,4 +1,4 @@
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 import template from './list.component.html'
 import './list.compoent.scss'
@@ -21,13 +21,7 @@ export default class ListPageComponent extends Vue {
     loadList() {
     }
 
-    @Watch('list')
-    onListChange(newVal, oldVal) {
-        console.log(newVal, oldVal)
-    }
-
     initialization() {
-        console.log('这是个异步路由组件')
         return this.loadList()
     }
 

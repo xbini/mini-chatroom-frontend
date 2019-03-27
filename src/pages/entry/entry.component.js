@@ -12,7 +12,6 @@ export default class EntryPageComponent extends Vue {
     formatDateTime = moment().format('YYYY年MoDo hh:mm:ss')
     socket = null
 
-
     get menus() {
         const routes = getRoutes()
             .filter(r => r.path !== '')
