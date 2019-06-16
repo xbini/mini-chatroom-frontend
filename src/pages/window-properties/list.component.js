@@ -22,7 +22,14 @@ export default class ListPageComponent extends Vue {
     }
 
     initialization() {
+        const loading = this.$loading({
+            lock: true,
+            text: '加载中...',
+            // spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+        })
         return this.loadList()
+            .finally(() => loading.close())
     }
 
     mounted() {

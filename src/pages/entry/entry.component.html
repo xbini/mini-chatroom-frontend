@@ -9,22 +9,17 @@
   </el-header>
   <el-container>
     <el-aside>
-      <el-menu background-color="#545c64"
-               text-color="#fff"
-               active-text-color="#ffd04b">
-        <el-submenu v-for="menu in menus" :index="menu.index" :key="menu.index">
+      <el-menu background-color="#545c64" text-color="#fff" active-text-color="var(--color-primary)" :router="true"
+        :default-active="activeMenu">
+        <el-menu-item v-for="menu in menus" :index="menu.index" :key="menu.index">
           <template slot="title">
-            <i class="el-icon-location"></i>
+            <i v-if="menu.icon" :class="menu.icon"></i>
             <span>{{menu.name}}</span>
           </template>
-          <el-menu-item v-for="child in menu.children" :index="child.index" :key="child.index"
-                        @click="$router.push(child.path)">
-            {{child.name}}
-          </el-menu-item>
-        </el-submenu>
+        </el-menu-item>
       </el-menu>
     </el-aside>
-    <el-main>
+    <el-main class="full-height">
       <router-view></router-view>
     </el-main>
   </el-container>

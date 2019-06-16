@@ -4,28 +4,30 @@ import moment from 'moment'
 import template from './entry.component.html'
 import { SOCKET } from '../../core/core-api'
 import './entry.component.scss'
-import { getRoutes } from '../routes'
 
 
 @Component({ template })
 export default class EntryPageComponent extends Vue {
     formatDateTime = moment().format('YYYY年MoDo hh:mm:ss')
     socket = null
+    menus = [
+        {
+            index: '/entry/sort',
+            name: 'sort',
+            path: '/entry/sort',
+            icon: 'el-icon-s-opportunity'
+        },
+        {
+            index: '/entry/window-properties',
+            name: 'window-properties',
+            path: '/entry/window-properties',
+            icon: 'el-icon-s-data'
+        }
+    ]
 
-    get menus() {
-        const routes = getRoutes()
-            .filter(r => r.path !== '')
-        return routes.map((route, index) => ({
-            index: `${index}`,
-            name: route.path,
-            children: route.children
-                .filter(c => c.path !== '')
-                .map((c, i) => ({
-                    index: `${index}-${i}`,
-                    path: `${route.path}/${c.path}`,
-                    name: c.path
-                }))
-        }))
+    get activeMenu() {
+        const { path } = this.$route
+        return path
     }
 
     registerSocket() {

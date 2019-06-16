@@ -1,7 +1,8 @@
 export function loadList() {
     return new Promise(((resolve) => {
         setTimeout(() => {
-            resolve(Object.keys(window))
+            const array = Object.keys(window).map(key => ({ name: key, content: String(window[key]) }))
+            resolve(array)
         }, 1000)
     }))
 }

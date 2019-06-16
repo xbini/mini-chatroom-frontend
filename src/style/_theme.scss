@@ -1,5 +1,3 @@
-@import "variable";
-
 @each $color, $value in $colors-map {
   .color-#{$color} {
     color: #{$value};
