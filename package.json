@@ -1,6 +1,6 @@
 {
   "name": "vue-start",
-  "version": "0.1.0-0",
+  "version": "0.1.0",
   "author": "xluobin@163.com",
   "description": "This is a mini project to study Vue and Webpack",
   "main": "./src/main.js",
