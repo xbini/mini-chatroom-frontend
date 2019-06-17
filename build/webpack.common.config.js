@@ -17,7 +17,9 @@ const commonConfig = {
         'vue-router': 'VueRouter',
         vuex: 'Vuex',
         'element-ui': 'ELEMENT',
-        'socket.io-client': 'io'
+        'socket.io-client': 'io',
+        axios: 'axios',
+        'perfect-scrollbar': 'PerfectScrollbar'
     },
     context: root,
     stats: {

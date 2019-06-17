@@ -34,7 +34,9 @@ const prodConfig = merge(commonConfig, {
                 'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
                 'https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css',
                 // socket.io
-                'https://cdn.jsdelivr.net/npm/socket.io-client/dist/socket.io.js'
+                'https://cdn.jsdelivr.net/npm/socket.io-client/dist/socket.io.js',
+                // axios
+                'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'
             ],
             append: false
         }),

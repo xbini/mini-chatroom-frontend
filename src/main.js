@@ -1,6 +1,6 @@
 import { Vue } from 'vue-property-decorator'
 import createLogger from 'vuex/dist/logger'
-import Vuex, { Store } from 'vuex'
+import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import ELEMENT from 'element-ui'
 import './style/index.scss'
@@ -11,6 +11,8 @@ import { version } from '../package'
 import { commonComponents } from './components'
 import { commonFilters } from './filters'
 import { commonDirectives } from './directives'
+
+const { Store } = Vuex
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
