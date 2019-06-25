@@ -17,6 +17,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Start deploying'
+                sh 'cd dist/'
+                sh 'tar -zcvf dist.tar.gz .'
+                sh 'cp dist.tar.gz /var/website/vue-start'
+                sh 'cd /var/website/vue-start'
+                sh 'tar -zxvf dist.tar.gz'
             }
         }
     }
