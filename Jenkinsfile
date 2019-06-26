@@ -1,12 +1,12 @@
 pipeline {
-    agent { docker 'node:10.13.0' }
+    agent any
     stages {
         stage('Build') {
             steps {
                 echo 'Start building'
-                sh 'yarn install'
-                sh 'yarn lint'
-                sh 'yarn build'
+                sh '/home/luobin/.nvm/versions/node/v10.16.0/bin/yarn install'
+                sh '/home/luobin/.nvm/versions/node/v10.16.0/bin/yarn lint'
+                sh '/home/luobin/.nvm/versions/node/v10.16.0/bin/yarn build'
             }
         }
         stage('Test') {
