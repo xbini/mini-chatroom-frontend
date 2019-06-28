@@ -12,6 +12,8 @@
     "serve": "webpack-dev-server --color --progress --config ./build/webpack.dev.config",
     "serve:hmr": "webpack-dev-server --color --progress --hot --inline --config ./build/webpack.dev.config",
     "build": "webpack --color --progress --config ./build/webpack.prod.config",
+    "build:stats": "webpack --color --progress --profile --json > stats.json --config ./build/webpack.prod.config && mv stats.json ./dist",
+    "bundle-analyzer": "webpack-bundle-analyzer ./dist/stats.json -m static -O -r ./dist/bundle-analyzer.html",
     "release": "standard-version",
     "prerelease": "standard-version --prerelease"
   },
@@ -51,6 +53,7 @@
     "url-loader": "^2.0.0",
     "vue-loader": "^15.7.0",
     "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
