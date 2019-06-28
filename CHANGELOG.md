@@ -1,6 +1,16 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [0.2.0-0](https://github.com/xbini/vue-start/compare/v0.1.0...v0.2.0-0) (2019-06-28)
+
+
+### Features
+
+* add seconds freshing ([39fd70d](https://github.com/xbini/vue-start/commit/39fd70d))
+* update deps ([c70a580](https://github.com/xbini/vue-start/commit/c70a580))
+
+
 
 # [0.1.0](https://github.com/xbini/vue-start/compare/v0.1.0-0...v0.1.0) (2019-06-16)
 
