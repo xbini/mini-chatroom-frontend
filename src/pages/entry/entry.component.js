@@ -5,10 +5,10 @@ import template from './entry.component.html'
 import { SOCKET } from '../../core/core-api'
 import './entry.component.scss'
 
-
+const DATE_TIME_FORMAT = 'YYYY年MoDo HH:mm:ss'
 @Component({ template })
 export default class EntryPageComponent extends Vue {
-    formatDateTime = moment().format('YYYY年MoDo hh:mm:ss')
+    formatDateTime = moment().format(DATE_TIME_FORMAT)
     socket = null
     menus = [
         {
@@ -36,14 +36,14 @@ export default class EntryPageComponent extends Vue {
         })
         this.socket.emit('msg', 'i am coming')
         this.socket.on('date-change', (timestamp) => {
-            this.formatDateTime = moment(timestamp).format('YYYY年MoDo hh:mm:ss')
+            this.formatDateTime = moment(timestamp).format(DATE_TIME_FORMAT)
         })
     }
 
     initialization() {
         // return this.registerSocket()
         setInterval(() => {
-            this.formatDateTime = moment().format('YYYY年MoDo hh:mm:ss')
+            this.formatDateTime = moment().format(DATE_TIME_FORMAT)
         }, 1000)
     }
 
