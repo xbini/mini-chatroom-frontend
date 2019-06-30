@@ -13,7 +13,7 @@
     "serve:hmr": "webpack-dev-server --color --progress --hot --inline --config ./build/webpack.dev.config",
     "build": "webpack --color --progress --config ./build/webpack.prod.config",
     "build:stats": "webpack --color --progress --profile --json > stats.json --config ./build/webpack.prod.config && mv stats.json ./dist",
-    "bundle-analyzer": "webpack-bundle-analyzer ./dist/stats.json -m static -O -r ./dist/bundle-analyzer.html",
+    "build:bundle-analyzer": "webpack-bundle-analyzer ./dist/stats.json -m static -O -r ./dist/bundle-analyzer.html",
     "release": "standard-version",
     "prerelease": "standard-version --prerelease"
   },
