@@ -41,10 +41,10 @@ export default class EntryPageComponent extends Vue {
     }
 
     initialization() {
-        // return this.registerSocket()
-        setInterval(() => {
-            this.formatDateTime = moment().format(DATE_TIME_FORMAT)
-        }, 1000)
+        return this.registerSocket()
+        // setInterval(() => {
+        //     this.formatDateTime = moment().format(DATE_TIME_FORMAT)
+        // }, 1000)
     }
 
     mounted() {
