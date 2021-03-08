@@ -8,7 +8,7 @@
   "scripts": {
     "lint:js": "eslint \"src/**/*.js\" --color",
     "lint:scss": "stylelint \"src/**/*.scss\" --color",
-    "lint": "yarn lint:js && yarn lint:scss",
+    "lint": "npm run lint:js && npm run lint:scss",
     "serve": "webpack-dev-server --color --progress --config ./build/webpack.dev.config",
     "serve:hmr": "webpack-dev-server --color --progress --hot --inline --config ./build/webpack.dev.config",
     "build": "webpack --color --progress --config ./build/webpack.prod.config",
