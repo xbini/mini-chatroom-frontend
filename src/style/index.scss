@@ -1,12 +1,5 @@
-/* todo: css duplication
- 某些组件会同时@import某些共同的css，目前版本没有css tree-shaking特性，
- 就会导致引入重复的css代码，造成资源浪费。
- 因此，开发者应该避免@import同样的样式文件
- */
 @import "reset";
-@import "common";
+@import "tools";
 @import "variable";
 @import "font";
-@import "typograph";
 @import "theme";
-@import "components";

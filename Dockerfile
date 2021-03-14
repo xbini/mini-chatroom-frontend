@@ -1,6 +1,6 @@
-FROM node:10.15.3
+FROM node:14
 COPY . /app
 WORKDIR /app
-RUN yarn install
+RUN npm install
 EXPOSE 1500
-CMD yarn serve
+CMD npm run start
