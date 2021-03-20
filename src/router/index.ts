@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Chatroom from '../pages/Chatroom.vue'
 
 
@@ -10,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
 })
 

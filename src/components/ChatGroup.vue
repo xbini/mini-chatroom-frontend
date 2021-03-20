@@ -1,12 +1,22 @@
 <template>
-  <div class="comment">
+  <div class="comment" v-auto-scroll="direction">
     <slot></slot>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { AutoScroll } from '../directives/auto-scroll'
 
 const ChatGroup = defineComponent({
+  directives: {
+    [AutoScroll.name]: AutoScroll.directive
+  },
+  setup() {
+    const direction = "bottom"
+    return {
+      direction
+    }
+  }
 })
 export default ChatGroup
 </script>

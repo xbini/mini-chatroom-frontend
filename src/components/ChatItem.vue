@@ -1,35 +1,34 @@
 <template>
   <div class="clearfix chat-item">
-    <img class="avatar pull-left" src="{avatar}" alt="avatar" />
+    <img class="avatar pull-left" :src="avatar || defaultAvatar" alt="avatar" />
     <div class="info">
       <div>
-        <strong class="text-primary {selfClass}">{name}</strong>
-        <small class="text-muted">{time}</small>
+        <strong class="text-primary {selfClass}">{{ name }}</strong>
+        <small class="text-muted">{{ time }}</small>
       </div>
-      <div class="content">{content}</div>
+      <div class="content">{{ content }}</div>
       <div class="text-right">
-        <small>from <span class="text-danger">{footer}</span></small>
+        <small>
+          from
+          <span class="text-danger">{{ footer }}</span>
+        </small>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
+import { generateAvatar } from '../common/helper'
 
 let avatar = ''
-function generateAvatar() {
-  const tag = parseInt(String(Math.random() * 10000000), 10);
-  return 'https://avatars.githubusercontent.com/u/' + tag + '?s=60&v=4';
-}
 
 const ChatItem = defineComponent({
   props: {
     avatar: {
-      type: String,
-      default: generateAvatar()
+      type: String
     },
     time: {
-      type: Number
+      type: String
     },
     name: {
       type: String
@@ -39,6 +38,15 @@ const ChatItem = defineComponent({
     },
     footer: {
       type: String
+    }
+  },
+  setup(props) {
+    const defaultAvatar = computed(() => generateAvatar())
+    let isSelf = false
+
+    return {
+      isSelf,
+      defaultAvatar
     }
   }
 })

@@ -28,9 +28,8 @@ devConfig.devServer = {
     compress: true,
     port: 1500,
     host: '0.0.0.0',
-    open: false,
+    open: true,
     headers: {
-        'Access-Control-Allow-Origin': '*'
     },
     useLocalIp: false
 }
