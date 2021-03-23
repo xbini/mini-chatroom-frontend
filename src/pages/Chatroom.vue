@@ -11,6 +11,7 @@
         v-for="(chat, index) in chats"
         :key="index"
         :avatar="chat.avatar"
+        :tag="chat.tag"
         :name="chat.name"
         :time="chat.time"
         :content="chat.content"
@@ -23,6 +24,7 @@
           v-model="message"
           autofocus
           @keyup.enter="sendMessage"
+          @input="onMessageInput"
           class="form-control"
           label="chat-input"
           name="chat-input"
@@ -43,12 +45,14 @@
 <script lang="ts">
 import io from "socket.io-client"
 import moment from "moment"
+import { useStore } from "vuex"
 import { defineComponent, onMounted, ref } from "@vue/runtime-core"
 import ChatGroup from '../components/ChatGroup.vue'
 import ChatItem from '../components/ChatItem.vue'
 import { SOCKET_URL } from '../common/api-list'
-import { TIME_FORMAT, WS_EVENT } from "../common/constants"
-import { parseName, parseFooter, parseContent } from '../common/helper'
+import { SOUGOU_IMG_REG, TIME_FORMAT, WS_EVENT } from "../common/constants"
+import { parseName, parseFooter } from '../common/helper'
+import { ChatroomActionType } from "../store/chatroom"
 
 const Chatroom = defineComponent({
   components: {
@@ -59,6 +63,7 @@ const Chatroom = defineComponent({
 
   },
   setup() {
+    const store = useStore()
     const message = ref('')
     const chats = ref([{}])
     const onlineCount = ref(0)
@@ -81,21 +86,24 @@ const Chatroom = defineComponent({
       message.value = ''
       socket.emit(WS_EVENT.SEND_CHAT, data)
     }
+    const onMessageInput = () => {
+      return SOUGOU_IMG_REG.test(message.value) && sendMessage()
+    }
     const registerWS = () => {
       socket.on(WS_EVENT.RECEIVE_CHAT, (res: any) => {
         const chat = {
           avatar: res.avatar,
-          // selfClass: window.MINI_CHATROOM_TAG === comment.tag ? 'bg-danger' : '',
+          tag: res.tag,
           name: parseName(res.ip, res.tag),
           time: moment(res.time).format(TIME_FORMAT),
-          content: parseContent(res.content),
+          content: res.content,
           footer: parseFooter(res.userAgent)
         }
         chats.value.push(chat)
       })
       socket.on(WS_EVENT.INIT, function (res: any) {
         onlineCount.value = res.count
-        // window.MINI_CHATROOM_TAG = res.tag
+        store.dispatch(ChatroomActionType.UpdateCurrentTag, res.tag);
         document.title = 'Mini Chatroom(' + res.tag + ')'
       })
       socket.on(WS_EVENT.ALWAYS_PUSH, function (res: any) {
@@ -108,7 +116,8 @@ const Chatroom = defineComponent({
       chats,
       onlineCount,
       message,
-      sendMessage
+      sendMessage,
+      onMessageInput
     }
   }
 })

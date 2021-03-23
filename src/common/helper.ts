@@ -1,3 +1,4 @@
+import { h } from "vue"
 import { SOUGOU_IMG_REG } from "./constants"
 
 export function parseName(ip: string, tag: string) {
@@ -6,21 +7,32 @@ export function parseName(ip: string, tag: string) {
 }
 
 export function parseFooter(userAgent: any) {
-    var result = ''
-    var i = userAgent.match(/\(/).index
-    var j = userAgent.match(/\)/).index
+    let result = ''
+    const i = userAgent.match(/\(/).index
+    const j = userAgent.match(/\)/).index
     result = userAgent.substring(i + 1, j)
     return result || 'unknown'
 }
 
-export function parseContent(content: string) {
-    var result = content
-    var matched = content.match(SOUGOU_IMG_REG)
-    var url = matched ? matched[1] : undefined
+export function renderChatContent(content: string) {
+    const matched = content.match(SOUGOU_IMG_REG)
+    const url = matched ? matched[1] : undefined
     if (url) {
-        result = "<img class='content-image' src='" + url + "'/>"
+        return h(
+            'img',
+            {
+                style: 'width: 100px;',
+                src: url
+            }
+        )
     }
-    return result || 'this is content'
+    return h(
+        'div',
+        {
+            style: 'word-break: break-all;',
+            innerText: content || 'this is content',
+        }
+    )
 }
 
 export function generateAvatar() {

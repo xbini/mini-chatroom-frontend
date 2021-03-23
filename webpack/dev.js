@@ -31,7 +31,11 @@ devConfig.devServer = {
     open: true,
     headers: {
     },
-    useLocalIp: false
+    useLocalIp: true,
+    historyApiFallback: {
+        rewrites: [
+            { from: /./, to: '/index.html' }
+        ]
+    }
 }
 module.exports = devConfig
-

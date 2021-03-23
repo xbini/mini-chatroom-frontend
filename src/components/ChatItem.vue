@@ -1,12 +1,14 @@
 <template>
   <div class="clearfix chat-item">
-    <img class="avatar pull-left" :src="avatar || defaultAvatar" alt="avatar" />
+    <img class="avatar pull-left" :src="computedAvatar" alt="avatar" />
     <div class="info">
       <div>
-        <strong class="text-primary {selfClass}">{{ name }}</strong>
-        <small class="text-muted">{{ time }}</small>
+        <strong class="text-primary" :class="isSelf ? 'bg-danger' : ''">
+          {{ name }}
+        </strong>
+        <small class="text-muted">&nbsp;{{ time }}</small>
       </div>
-      <div class="content">{{ content }}</div>
+      <ChatContent :content="content" class="content" />
       <div class="text-right">
         <small>
           from
@@ -18,16 +20,24 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { generateAvatar } from '../common/helper'
+import { Store, useStore } from "vuex"
 
-let avatar = ''
+import ChatContent from './ChatContent.vue'
+import { generateAvatar } from '../common/helper'
+import { ChatroomActionType, ChatroomStateForUseStore } from '../store/chatroom'
 
 const ChatItem = defineComponent({
+  components: {
+    ChatContent
+  },
   props: {
     avatar: {
       type: String
     },
     time: {
+      type: String
+    },
+    tag: {
       type: String
     },
     name: {
@@ -41,12 +51,30 @@ const ChatItem = defineComponent({
     }
   },
   setup(props) {
-    const defaultAvatar = computed(() => generateAvatar())
-    let isSelf = false
+    const store: Store<ChatroomStateForUseStore> = useStore()
+
+    const computedAvatar = computed(() => {
+      const { avatar } = props
+      if (avatar) {
+        store.dispatch(ChatroomActionType.UpdateCurrentAvatar, avatar)
+        return avatar
+      }
+      const { currentAvatar } = store.state.chatroom
+      if (currentAvatar) {
+        return currentAvatar
+      }
+      store.dispatch(ChatroomActionType.UpdateCurrentAvatar, generateAvatar())
+      return store.state.chatroom.currentAvatar
+    })
+
+    const isSelf = computed(() => {
+      const { tag } = props
+      return store.state.chatroom.currentTag === tag
+    })
 
     return {
       isSelf,
-      defaultAvatar
+      computedAvatar
     }
   }
 })
@@ -72,13 +100,5 @@ export default ChatItem
 
 .chat-item .info {
   margin-left: 50px;
-}
-
-.chat-item .content-image {
-  max-width: 100px;
-}
-
-.chat-item .content {
-  word-break: break-all;
 }
 </style>
