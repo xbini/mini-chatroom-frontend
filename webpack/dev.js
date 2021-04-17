@@ -2,12 +2,14 @@ const path = require('path')
 const config = require('../config.json')
 const commonConfig = require('./common')
 const genStyleLoadersAndPlugins = require('./style.loaders')
+const generateHtmlTags = require('./external')
 const styleOptions = genStyleLoadersAndPlugins(true)
 
 const devConfig = commonConfig
 devConfig.mode = 'development'
 devConfig.devtool = 'inline-source-map'
 devConfig.module.rules.push(...styleOptions.loaders)
+devConfig.plugins.push(generateHtmlTags(devConfig.mode))
 
 devConfig.devServer = {
     contentBase: path.resolve(__dirname, '../dist/'),

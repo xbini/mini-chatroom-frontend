@@ -10,15 +10,14 @@ module.exports = {
     target: 'web',
     cache: true,
     bail: true,
-    // 不打包比较稳定的依赖库，便于浏览器缓存，加快访问速度
     // 说明：https://webpack.docschina.org/configuration/externals/#externals
     externals: {
-        // moment: 'moment',
-        // vue: 'Vue',
-        // 'vue-router': 'VueRouter',
-        // vuex: 'Vuex',
-        // 'socket.io-client': 'io',
-        // axios: 'axios'
+        moment: 'moment',
+        vue: 'Vue',
+        'vue-router': 'VueRouter',
+        vuex: 'Vuex',
+        'socket.io-client': 'io',
+        axios: 'axios'
     },
     stats: {
         children: false
