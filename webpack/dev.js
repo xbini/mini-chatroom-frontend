@@ -30,10 +30,10 @@ devConfig.devServer = {
     compress: true,
     port: 1500,
     host: '0.0.0.0',
-    open: true,
+    open: false,
     headers: {
     },
-    useLocalIp: true,
+    useLocalIp: false,
     historyApiFallback: {
         rewrites: [
             { from: /./, to: '/index.html' }

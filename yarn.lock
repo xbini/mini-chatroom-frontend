@@ -28,13 +28,6 @@
   resolved "https://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.13.11.tgz#f93ebfc99d21c1772afbbaa153f47e7ce2f50b88"
   integrity sha1-+T6/yZ0hwXcq+7qhU/R+fOL1C4g=
 
-"@babel/runtime@7.x":
-  version "7.13.10"
-  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.13.10.tgz?cache=0&sync_timestamp=1615243551514&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
-  integrity sha1-R9QqV7YJX0Ro2kQDiP262L6/DX0=
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/types@^7.12.0":
   version "7.13.0"
   resolved "https://registry.npm.taobao.org/@babel/types/download/@babel/types-7.13.0.tgz#74424d2816f0171b4100f0ab34e9a374efdf7f80"
@@ -89,11 +82,6 @@
   version "1.0.0-next.11"
   resolved "https://registry.npm.taobao.org/@polka/url/download/@polka/url-1.0.0-next.11.tgz#aeb16f50649a91af79dbe36574b66d0f9e4d9f71"
   integrity sha1-rrFvUGSaka952+NldLZtD55Nn3E=
-
-"@popperjs/core@^2.5.4":
-  version "2.9.1"
-  resolved "https://registry.npm.taobao.org/@popperjs/core/download/@popperjs/core-2.9.1.tgz#7f554e7368c9ab679a11f4a042ca17149d70cf12"
-  integrity sha1-f1VOc2jJq2eaEfSgQsoXFJ1wzxI=
 
 "@types/component-emitter@^1.2.10":
   version "1.2.10"
@@ -153,30 +141,6 @@
   version "1.4.36"
   resolved "https://registry.npm.taobao.org/@types/socket.io-client/download/@types/socket.io-client-1.4.36.tgz#e4f1ca065f84c20939e9850e70222202bd76ff3f"
   integrity sha1-5PHKBl+Ewgk56YUOcCIiAr12/z8=
-
-"@vant/icons@^1.5.3":
-  version "1.5.3"
-  resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.5.3.tgz#b7779f67bf608d417a82452fbede406dfa46b439"
-  integrity sha1-t3efZ79gjUF6gkUvvt5AbfpGtDk=
-
-"@vant/lazyload@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/@vant/lazyload/download/@vant/lazyload-1.0.4.tgz?cache=0&sync_timestamp=1615085323777&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vant%2Flazyload%2Fdownload%2F%40vant%2Flazyload-1.0.4.tgz#f1bbd81217cf416a377ab2f928f2a147a4489259"
-  integrity sha1-8bvYEhfPQWo3erL5KPKhR6RIklk=
-
-"@vant/popperjs@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/@vant/popperjs/download/@vant/popperjs-1.0.4.tgz#49c20809a3828e7b036e23d50fb56121e997618f"
-  integrity sha1-ScIICaOCjnsDbiPVD7VhIemXYY8=
-  dependencies:
-    "@popperjs/core" "^2.5.4"
-
-"@vant/use@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.npm.taobao.org/@vant/use/download/@vant/use-1.0.5.tgz#44bee952ebccf9396414a51c4d4b458434a9de23"
-  integrity sha1-RL7pUuvM+TlkFKUcTUtFhDSp3iM=
-  dependencies:
-    "@babel/runtime" "7.x"
 
 "@vue/compiler-core@3.0.7":
   version "3.0.7"
@@ -1228,11 +1192,6 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/boolbase/download/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
-
-bootstrap@3.3.7:
-  version "3.3.7"
-  resolved "https://registry.npm.taobao.org/bootstrap/download/bootstrap-3.3.7.tgz?cache=0&sync_timestamp=1612974643080&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fbootstrap%2Fdownload%2Fbootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
-  integrity sha1-WjiTlFSfIzMIdaOxUGVldPip63E=
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2525,7 +2484,7 @@ glob-to-regexp@^0.4.1:
   resolved "https://registry.npm.taobao.org/glob-to-regexp/download/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
   integrity sha1-x1KXCHyFG5pXi9IX3VmpL1n+VG4=
 
-glob@^7.0.3, glob@^7.1.3:
+glob@^7.0.3, glob@^7.1.3, glob@^7.1.6:
   version "7.1.6"
   resolved "https://registry.npm.taobao.org/glob/download/glob-7.1.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fglob%2Fdownload%2Fglob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha1-FB8zuBp8JJLhJVlDB0gMRmeSeKY=
@@ -2710,6 +2669,15 @@ html-webpack-plugin@5.3.1:
     lodash "^4.17.20"
     pretty-error "^2.1.1"
     tapable "^2.0.0"
+
+html-webpack-tags-plugin@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/html-webpack-tags-plugin/-/html-webpack-tags-plugin-3.0.1.tgz#52baf2feec879a4108e6955b4e81376581a334dc"
+  integrity sha512-P/cfYDqXtgXoGFUv8zi/er8XFU5ztQmqp+VwmnhZEH8L35Q2YRKIb9P+dRiykLIDZF0NMt+l/uj+jmttKwmLvg==
+  dependencies:
+    glob "^7.1.6"
+    minimatch "^3.0.4"
+    slash "^3.0.0"
 
 htmlparser2@^3.10.1:
   version "3.10.1"
@@ -4152,11 +4120,6 @@ regenerator-runtime@^0.11.0:
   resolved "https://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.11.1.tgz?cache=0&sync_timestamp=1600811009645&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fregenerator-runtime%2Fdownload%2Fregenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha1-vgWtf5v30i4Fb5cmzuUBf78Z4uk=
 
-regenerator-runtime@^0.13.4:
-  version "0.13.7"
-  resolved "https://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.13.7.tgz?cache=0&sync_timestamp=1600811009645&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fregenerator-runtime%2Fdownload%2Fregenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
-  integrity sha1-ysLazIoepnX+qrrriugziYrkb1U=
-
 regenerator-transform@^0.10.0:
   version "0.10.1"
   resolved "https://registry.npm.taobao.org/regenerator-transform/download/regenerator-transform-0.10.1.tgz#1e4996837231da8b7f3cf4114d71b5691a0680dd"
@@ -5121,17 +5084,6 @@ v8-compile-cache@^2.0.3, v8-compile-cache@^2.2.0:
   version "2.3.0"
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha1-LeGWGMZtwkfc+2+ZM4A12CRaLO4=
-
-vant@3.0.9:
-  version "3.0.9"
-  resolved "https://registry.npm.taobao.org/vant/download/vant-3.0.9.tgz#f946775001a834ce27843fc9fa25414368266a78"
-  integrity sha1-+UZ3UAGoNM4nhD/J+iVBQ2gmang=
-  dependencies:
-    "@babel/runtime" "7.x"
-    "@vant/icons" "^1.5.3"
-    "@vant/lazyload" "^1.0.4"
-    "@vant/popperjs" "^1.0.4"
-    "@vant/use" "^1.0.5"
 
 vary@~1.1.2:
   version "1.1.2"

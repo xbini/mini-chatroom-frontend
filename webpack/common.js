@@ -10,12 +10,8 @@ module.exports = {
     target: 'web',
     cache: true,
     bail: true,
-    // 说明：https://webpack.docschina.org/configuration/externals/#externals
     externals: {
         moment: 'moment',
-        vue: 'Vue',
-        'vue-router': 'VueRouter',
-        vuex: 'Vuex',
         'socket.io-client': 'io',
         axios: 'axios'
     },
@@ -41,13 +37,7 @@ module.exports = {
     optimization: {
         runtimeChunk: {
             name: 'runtime'
-        },
-        // splitChunks: {
-        //     chunks(chunk) {
-        //         // exclude `polyfill`
-        //         return chunk.name && chunk.name.includes('polyfill') === false
-        //     }
-        // }
+        }
     },
     module: {
         rules: [
@@ -75,8 +65,6 @@ module.exports = {
                         limit: 4096,
                         name: '[name].[ext]',
                         outputPath: 'images'
-                        // cdn 前缀
-                        // publicPath
                     }
                 }
             },
@@ -89,8 +77,6 @@ module.exports = {
                         limit: 4096,
                         name: '[name].[ext]',
                         outputPath: 'fonts'
-                        // cdn 前缀
-                        // publicPath
                     }
                 }
             }
