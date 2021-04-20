@@ -10,23 +10,27 @@
   },
   "scripts": {
     "lint:ts": "eslint \"src/**/*.ts\" --color",
+    "mock:dev": "npm-run-all --parallel mock dev",
     "dev": "webpack serve --color --progress -c ./webpack/dev",
     "dev:hmr": "webpack serve --color --progress --hot --inline -c ./webpack/dev",
+    "mock": "node -r esm mock/server.js",
     "build": "webpack --color --progress -c ./webpack/prod",
     "build:stats": "webpack --color --progress --profile --json > stats.json -c ./webpack/prod && mv stats.json ./dist",
     "build:bundle-analyzer": "webpack-bundle-analyzer ./dist/stats.json -m static -O -r ./dist/bundle-analyzer.html"
   },
   "devDependencies": {
-    "@types/socket.io-client": "1.4.36",
     "@vue/compiler-sfc": "3.0.7",
     "copy-webpack-plugin": "8.0.0",
     "css-loader": "5.1.2",
     "eslint": "7.21.0",
     "eslint-config-standard": "16.0.2",
     "eslint-plugin-vue": "7.7.0",
+    "esm": "3.2.25",
+    "express": "4.17.1",
     "extract-loader": "5.1.0",
     "html-webpack-plugin": "5.3.1",
     "html-webpack-tags-plugin": "3.0.1",
+    "npm-run-all": "4.1.5",
     "sass": "1.32.8",
     "sass-loader": "11.0.1",
     "style-loader": "2.0.0",
@@ -40,6 +44,7 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
+    "@types/socket.io-client": "1.4.36",
     "axios": "0.21.1",
     "moment": "2.29.1",
     "socket.io-client": "4.0.0",

@@ -19,7 +19,7 @@ devConfig.devServer = {
     proxy: [
         {
             context: ['/api/', '/socket/'],
-            target: config.server.api,
+            target: config.proxyServer,
             changeOrigin: true,
             secure: false
         }
