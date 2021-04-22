@@ -1,27 +1,24 @@
-export interface ChatroomState {
+export interface IChatroomState {
     currentAvatar: string | null,
     currentTag: string | null
 }
 
-export interface ChatroomStateForUseStore {
-    chatroom: ChatroomState
-}
 
-const state: ChatroomState = {
+const state: IChatroomState = {
     currentAvatar: '',
     currentTag: ''
 }
 
 export enum ChatroomActionType {
-    UpdateCurrentAvatar = "> update current avatar",
-    UpdateCurrentTag = "> update current tag"
+    UpdateCurrentAvatar = "update current avatar",
+    UpdateCurrentTag = "update current tag"
 }
 
 const mutations = {
-    [ChatroomActionType.UpdateCurrentAvatar](state: ChatroomState, avatar: string) {
+    [ChatroomActionType.UpdateCurrentAvatar](state: IChatroomState, avatar: string) {
         state.currentAvatar = avatar
     },
-    [ChatroomActionType.UpdateCurrentTag](state: ChatroomState, tag: string) {
+    [ChatroomActionType.UpdateCurrentTag](state: IChatroomState, tag: string) {
         state.currentTag = tag
     }
 }

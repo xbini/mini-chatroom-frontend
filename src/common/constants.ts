@@ -8,3 +8,11 @@ export enum WS_EVENT {
 export const TIME_FORMAT = 'HH:mm:ss'
 
 export const SOUGOU_IMG_REG = /点击\[(.*)\]查看表情/
+
+export interface ResponseSchema<T> {
+    status: number
+    data?: T,
+    message: string
+}
+
+export const STORAGE_TOKEN_KEY = "TOKEN"

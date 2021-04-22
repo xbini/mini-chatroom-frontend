@@ -1,10 +1,15 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { API_PREFIX } from './api-list'
+import { API_PATH, API_PREFIX } from './api-list'
+import { STORAGE_TOKEN_KEY } from './constants'
+
+const publicPaths = [API_PATH.AUTHENTICATION]
 
 export default function registerHttpInterceptor() {
     function requestCorrect(request: AxiosRequestConfig) {
         const { url } = request
         request.url = `${API_PREFIX}${url}`
+        const header = { token: localStorage.getItem(STORAGE_TOKEN_KEY) || undefined }
+        !publicPaths.includes(url as string) && (request.headers = { ...request.headers, ...header })
         return request
     }
 

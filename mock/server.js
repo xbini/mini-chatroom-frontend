@@ -5,11 +5,15 @@ import {
 
 const app = express()
 
+const publicPaths = [
+    '/api/authentication'
+]
 const isAuthorized = req => {
-    return true
+    return publicPaths.includes(req.url)
 }
 
 app.use((req, res, next) => {
+    console.log(`mock: ${req.url}`)
     if (isAuthorized(req)) {
         next()
     } else {

@@ -24,7 +24,8 @@ import { Store, useStore } from "vuex"
 
 import ChatContent from './ChatContent.vue'
 import { generateAvatar } from '../common/helper'
-import { ChatroomActionType, ChatroomStateForUseStore } from '../store/chatroom'
+import { ChatroomActionType } from '../store/chatroom'
+import { AppState } from '../store'
 
 const ChatItem = defineComponent({
   components: {
@@ -51,7 +52,7 @@ const ChatItem = defineComponent({
     }
   },
   setup(props) {
-    const store: Store<ChatroomStateForUseStore> = useStore()
+    const store: Store<AppState> = useStore()
 
     const computedAvatar = computed(() => {
       const { avatar } = props

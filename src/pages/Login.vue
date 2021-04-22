@@ -3,8 +3,8 @@
     <h3>Mini Chatroom</h3>
     <form action="javascript:;">
       <div class="form-group">
-        <label for="userInput">User</label>
-        <input class="form-control" id="userInput" v-model="user" />
+        <label for="usernameInput">username</label>
+        <input class="form-control" id="usernameInput" v-model="username" />
       </div>
       <div class="form-group">
         <label for="passwordInput">Password</label>
@@ -28,17 +28,25 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useStore } from 'vuex'
+import { AuthenticationActionType, IAuthenticationReqSchema } from '../store/authentication'
 
 const Login = defineComponent({
   setup() {
-    const user = ref('')
+    const store = useStore()
+    const username = ref('')
     const password = ref('')
     const remember = ref(false)
     const submit = () => {
-      console.log(user.value, password.value, remember.value)
+      const body: IAuthenticationReqSchema = {
+        username: username.value,
+        password: password.value,
+        remember: remember.value
+      }
+      store.dispatch(AuthenticationActionType.Authentication, body)
     }
     return {
-      user,
+      username,
       password,
       remember,
       submit
