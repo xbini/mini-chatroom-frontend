@@ -16,3 +16,11 @@ export interface ResponseSchema<T> {
 }
 
 export const STORAGE_TOKEN_KEY = "TOKEN"
+
+export interface IRequestPayload<T> {
+    meta: {
+        needSpinner?: boolean
+        needToast?: boolean
+    }
+    body: T
+}

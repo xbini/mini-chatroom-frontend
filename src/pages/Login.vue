@@ -29,6 +29,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
+import { IRequestPayload } from '../common/constants'
 import { AuthenticationActionType, IAuthenticationReqSchema } from '../store/authentication'
 
 const Login = defineComponent({
@@ -37,13 +38,22 @@ const Login = defineComponent({
     const username = ref('')
     const password = ref('')
     const remember = ref(false)
-    const submit = () => {
-      const body: IAuthenticationReqSchema = {
-        username: username.value,
-        password: password.value,
-        remember: remember.value
+    const submit = async () => {
+      const payload: IRequestPayload<IAuthenticationReqSchema> = {
+        meta: {
+          needToast: true
+        },
+        body: {
+          username: username.value,
+          password: password.value,
+          remember: remember.value
+        }
       }
-      store.dispatch(AuthenticationActionType.Authentication, body)
+      try {
+        await store.dispatch(AuthenticationActionType.Authentication, payload)
+      } catch (error) {
+
+      }
     }
     return {
       username,

@@ -1,6 +1,8 @@
 import axios, { AxiosResponse } from "axios"
 import { API_PATH } from "../common/api-list"
-import { ResponseSchema, STORAGE_TOKEN_KEY } from "../common/constants"
+import { IRequestPayload, ResponseSchema, STORAGE_TOKEN_KEY } from "../common/constants"
+import { generateErrorMessage } from "../common/helper"
+import { ToastActionType } from "./toast"
 
 export interface IAuthenticationReqSchema {
     username: string
@@ -48,13 +50,17 @@ const mutations = {
 }
 
 const actions = {
-    async [AuthenticationActionType.Authentication](context: any, payload: IAuthenticationReqSchema) {
+    async [AuthenticationActionType.Authentication](context: any, payload: IRequestPayload<IAuthenticationReqSchema>) {
+        const { meta: { needSpinner, needToast } } = payload
+        console.log(context)
         try {
-            const response: AxiosResponse<ResponseSchema<IAuthenticationResSchema>> = await axios.post(API_PATH.AUTHENTICATION, payload)
-            context.commit(AuthenticationActionType.AuthenticationSuccess, response.data.data?.token);
+            const response: AxiosResponse<ResponseSchema<IAuthenticationResSchema>> = await axios.post(API_PATH.AUTHENTICATION, payload.body)
+            context.commit(AuthenticationActionType.AuthenticationSuccess, response.data.data?.token)
+            return Promise.resolve(response)
         } catch (error) {
-            console.error(error)
-            context.commit(AuthenticationActionType.AuthenticationFailed);
+            context.commit(AuthenticationActionType.AuthenticationFailed)
+            needToast && context.dispatch(ToastActionType.Open, { message: generateErrorMessage(error) })
+            return Promise.reject(error)
         }
     }
 }

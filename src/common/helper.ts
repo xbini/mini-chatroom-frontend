@@ -1,3 +1,4 @@
+import { AxiosError, AxiosResponse } from "axios"
 import { h } from "vue"
 import { SOUGOU_IMG_REG } from "./constants"
 
@@ -38,4 +39,8 @@ export function renderChatContent(content: string) {
 export function generateAvatar() {
     const tag = parseInt(String(Math.random() * 10000000), 10);
     return 'https://avatars.githubusercontent.com/u/' + tag + '?s=60&v=4';
+}
+
+export function generateErrorMessage(error: AxiosError): string {
+    return error.message
 }

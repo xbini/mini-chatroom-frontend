@@ -1,8 +1,7 @@
 export interface IChatroomState {
-    currentAvatar: string | null,
-    currentTag: string | null
+    currentAvatar: string,
+    currentTag: string
 }
-
 
 const state: IChatroomState = {
     currentAvatar: '',
@@ -33,7 +32,6 @@ const actions = {
 }
 
 const getters = {
-
 }
 
 const chatroom = {
