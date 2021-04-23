@@ -4,11 +4,13 @@ import registerHttpInterceptor from './common/http-interceptor'
 import directives from './directives'
 import router from './router'
 import store from './store'
+import Spinner from './components/Spinner.vue'
 import Toast from './components/Toast.vue'
 
 const app = createApp({
     components: {
-        Toast
+        Toast,
+        Spinner
     }
 })
 

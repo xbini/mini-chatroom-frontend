@@ -19,7 +19,12 @@
         <label> <input type="checkbox" v-model="remember" />Remember me</label>
       </div>
       <div class="text-right">
-        <button type="submit" @click="submit" class="btn btn-primary">
+        <button
+          type="submit"
+          @click="submit"
+          :disabled="submitBtnDisable"
+          class="btn btn-primary"
+        >
           Login
         </button>
       </div>
@@ -38,10 +43,13 @@ const Login = defineComponent({
     const username = ref('')
     const password = ref('')
     const remember = ref(false)
+    const submitBtnDisable = ref(false)
     const submit = async () => {
+      submitBtnDisable.value = true
       const payload: IRequestPayload<IAuthenticationReqSchema> = {
         meta: {
-          needToast: true
+          needToast: true,
+          needSpinner: true
         },
         body: {
           username: username.value,
@@ -53,13 +61,16 @@ const Login = defineComponent({
         await store.dispatch(AuthenticationActionType.Authentication, payload)
       } catch (error) {
 
+      } finally {
+        submitBtnDisable.value = false
       }
     }
     return {
       username,
       password,
       remember,
-      submit
+      submit,
+      submitBtnDisable
     }
   }
 })

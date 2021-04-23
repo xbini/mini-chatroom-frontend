@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios"
 import { API_PATH } from "../common/api-list"
 import { IRequestPayload, ResponseSchema, STORAGE_TOKEN_KEY } from "../common/constants"
 import { generateErrorMessage } from "../common/helper"
+import { SpinnerActionType } from "./spinner"
 import { ToastActionType } from "./toast"
 
 export interface IAuthenticationReqSchema {
@@ -51,16 +52,21 @@ const mutations = {
 
 const actions = {
     async [AuthenticationActionType.Authentication](context: any, payload: IRequestPayload<IAuthenticationReqSchema>) {
-        const { meta: { needSpinner, needToast } } = payload
-        console.log(context)
+        const { meta: { needSpinner, needToast, toastKeep } } = payload
         try {
+            needSpinner && context.dispatch(SpinnerActionType.Start)
             const response: AxiosResponse<ResponseSchema<IAuthenticationResSchema>> = await axios.post(API_PATH.AUTHENTICATION, payload.body)
             context.commit(AuthenticationActionType.AuthenticationSuccess, response.data.data?.token)
             return Promise.resolve(response)
         } catch (error) {
             context.commit(AuthenticationActionType.AuthenticationFailed)
-            needToast && context.dispatch(ToastActionType.Open, { message: generateErrorMessage(error) })
+            needToast && context.dispatch(ToastActionType.Open, {
+                message: generateErrorMessage(error),
+                keep: toastKeep
+            })
             return Promise.reject(error)
+        } finally {
+            needSpinner && context.dispatch(SpinnerActionType.Stop)
         }
     }
 }

@@ -1,3 +1,5 @@
+import { TOAST_KEEP } from "../common/constants"
+
 export enum ToastType {
     Primary = "primary",
     Success = "success",
@@ -9,6 +11,7 @@ export enum ToastType {
 export interface IToastPayload {
     type?: ToastType
     message?: string
+    keep?: number
 }
 export interface IToastState extends IToastPayload {
     show: boolean
@@ -16,17 +19,17 @@ export interface IToastState extends IToastPayload {
 
 const state: IToastState = {
     show: false,
-    type: ToastType.Primary,
+    type: ToastType.Danger,
     message: ""
 }
 
 export enum ToastActionType {
-    Open = "Open toast",
-    OpenSuccess = "Open toast success",
-    OpenFailed = "Open toast failed",
-    Close = "Close toast",
-    CloseSuccess = "Close toast success",
-    CloseFailed = "Close toast failed"
+    Open = "open toast",
+    OpenSuccess = "open toast success",
+    OpenFailed = "open toast failed",
+    Close = "close toast",
+    CloseSuccess = "close toast success",
+    CloseFailed = "close toast failed"
 }
 
 const mutations = {
@@ -36,13 +39,17 @@ const mutations = {
         state.type = payload.type || state.type
     },
     [ToastActionType.Close](state: IToastState) {
+        state.message = ''
         state.show = false
     }
 }
 
+let timer = -1
 const actions = {
     [ToastActionType.Open](context: any, payload: IToastPayload) {
         context.commit(ToastActionType.OpenSuccess, payload)
+        clearTimeout(timer)
+        timer = window.setTimeout(() => context.commit(ToastActionType.Close), payload.keep || TOAST_KEEP)
     },
     [ToastActionType.Close](context: any) {
         context.commit(ToastActionType.CloseSuccess)

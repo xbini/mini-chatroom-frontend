@@ -21,6 +21,9 @@ export interface IRequestPayload<T> {
     meta: {
         needSpinner?: boolean
         needToast?: boolean
+        toastKeep?: number
     }
     body: T
 }
+
+export const TOAST_KEEP = 3000

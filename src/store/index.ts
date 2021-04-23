@@ -1,12 +1,14 @@
 import { createLogger, createStore } from 'vuex'
 import authentication, { IAuthenticationState } from './authentication'
 import chatroom, { IChatroomState } from './chatroom'
+import spinner, { ISpinnerState } from './spinner'
 import toast, { IToastState } from './toast'
 
 export interface AppState {
     chatroom: IChatroomState
     authentication: IAuthenticationState
     toast: IToastState
+    spinner: ISpinnerState
 }
 
 const store = createStore<AppState>({
@@ -17,7 +19,8 @@ const store = createStore<AppState>({
     modules: {
         chatroom,
         authentication,
-        toast
+        toast,
+        spinner
     }
 })
 export default store

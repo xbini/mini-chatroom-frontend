@@ -15,7 +15,7 @@ const isAuthorized = req => {
 app.use((req, res, next) => {
     console.log(`mock: ${req.url}`)
     if (isAuthorized(req)) {
-        next()
+        setTimeout(() => next(), 3000)
     } else {
         res.sendStatus(401)
     }
