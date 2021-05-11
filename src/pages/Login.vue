@@ -33,6 +33,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { IRequestPayload } from '../common/constants'
 import { AuthenticationActionType, IAuthenticationReqSchema } from '../store/authentication'
@@ -43,6 +44,7 @@ const Login = defineComponent({
     const username = ref('')
     const password = ref('')
     const remember = ref(false)
+    const router = useRouter()
     const submitBtnDisable = ref(false)
     const submit = async () => {
       submitBtnDisable.value = true
@@ -59,6 +61,7 @@ const Login = defineComponent({
       }
       try {
         await store.dispatch(AuthenticationActionType.Authentication, payload)
+        router.push("/chatroom")
       } catch (error) {
 
       } finally {

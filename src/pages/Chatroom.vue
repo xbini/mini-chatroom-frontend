@@ -46,7 +46,7 @@
 import io from "socket.io-client"
 import moment from "moment"
 import { useStore } from "vuex"
-import { defineComponent, onMounted, ref } from "@vue/runtime-core"
+import { defineComponent, onMounted, onUnmounted, ref } from "@vue/runtime-core"
 import ChatGroup from '../components/ChatGroup.vue'
 import ChatItem from '../components/ChatItem.vue'
 import { SOCKET_URL } from '../common/api-list'
@@ -111,6 +111,7 @@ const Chatroom = defineComponent({
       })
     }
     onMounted(registerWS)
+    onUnmounted(() => socket.close())
 
     return {
       chats,

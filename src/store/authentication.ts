@@ -3,7 +3,7 @@ import { API_PATH } from "../common/api-list"
 import { IRequestPayload, ResponseSchema, STORAGE_TOKEN_KEY } from "../common/constants"
 import { generateErrorMessage } from "../common/helper"
 import { SpinnerActionType } from "./spinner"
-import { ToastActionType } from "./toast"
+import { ToastActionType, ToastType } from "./toast"
 
 export interface IAuthenticationReqSchema {
     username: string
@@ -57,6 +57,11 @@ const actions = {
             needSpinner && context.dispatch(SpinnerActionType.Start)
             const response: AxiosResponse<ResponseSchema<IAuthenticationResSchema>> = await axios.post(API_PATH.AUTHENTICATION, payload.body)
             context.commit(AuthenticationActionType.AuthenticationSuccess, response.data.data?.token)
+            needToast && context.dispatch(ToastActionType.Open, {
+                message: "login success",
+                keep: toastKeep,
+                type: ToastType.Success
+            })
             return Promise.resolve(response)
         } catch (error) {
             context.commit(AuthenticationActionType.AuthenticationFailed)
@@ -72,7 +77,9 @@ const actions = {
 }
 
 const getters = {
-
+    token(state: IAuthenticationState) {
+        return state.token
+    }
 }
 
 const authentication = {
