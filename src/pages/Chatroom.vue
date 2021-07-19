@@ -43,7 +43,7 @@
   </div>
 </template>
 <script lang="ts">
-import io from "socket.io-client"
+import { io } from "socket.io-client"
 import moment from "moment"
 import { useStore } from "vuex"
 import { defineComponent, onMounted, onUnmounted, ref } from "@vue/runtime-core"

@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     console.log(`mock: ${req.url}`)
     if (isAuthorized(req)) {
         setTimeout(() => next(), 3000)
-    } else {
+    } else {/*  */
         res.sendStatus(401)
     }
 })
