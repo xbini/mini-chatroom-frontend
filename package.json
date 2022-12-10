@@ -27,7 +27,7 @@
     "eslint-config-standard": "16.0.2",
     "eslint-plugin-vue": "7.7.0",
     "esm": "3.2.25",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "extract-loader": "5.1.0",
     "html-webpack-plugin": "5.3.1",
     "html-webpack-tags-plugin": "3.0.1",
